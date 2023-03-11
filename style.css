@@ -218,7 +218,12 @@ select{
     cursor: pointer;
     color: #7971b7;
 }
-
+.color-blue{
+    color: #69c2ea;
+}
+#coordination{
+    margin: 5px 0;
+}
 @media (max-width:1000px){
     #modal{
         display: flex;

@@ -363,13 +363,10 @@ function calculate(lat,lon,method){
     prayTimes.setMethod(method);
     const date = new Date();
     
-    document.getElementById('coordination').innerHTML = "<br>عرض جغرافیایی: " + Number(lat).toFixed(2) + 
-    "<br>طول جغرافیایی: " + Number(lon).toFixed(2);
+    document.getElementById('coordination').innerHTML = "عرض جغرافیایی: <span class='color-blue'>" + Number(lat).toFixed(2) + 
+    "</span><br>طول جغرافیایی: <span class='color-blue'>" + Number(lon).toFixed(2) + "</span>";
 
     this.renderPrayTimes(date);
-
-    document.getElementById('times_footer').innerHTML = 
-    "<br>source: <a href='http://www.PrayTimes.org' target='_blank'>PrayTimes.org</a>";
 }
 function renderPrayTimes(date){
     let theDate = date.toLocaleDateString();
@@ -380,7 +377,7 @@ function renderPrayTimes(date){
     const tomorrow_times = prayTimes.getTimes([date.getFullYear(), parseInt(date.getMonth())+1, parseInt(date.getDate())+1], [selectedLat, selectedLon], 'auto');
     let tomorrow_date = new Date(date.setDate(date.getDate()+1)).toLocaleDateString().split('/');
     let tomorrow_shamsi = this.dateToShamsi(tomorrow_date[2],tomorrow_date[0],tomorrow_date[1]);
-    document.getElementById('today').innerHTML = "<br><div class='today-title'><span class='day-title'>امروز</span><span id='go_today' onclick='goToToday()'>برو به امروز</span>"+shDate[0]+"/"+shDate[1]+"/"+shDate[2]+"</span><span onclick='showPreviousPrayTime()' class='arrow'>&#8679;قبل</div>" +
+    document.getElementById('today').innerHTML = "<div class='today-title'><span class='day-title'>امروز</span><span id='go_today' onclick='goToToday()'>برو به امروز</span>"+shDate[0]+"/"+shDate[1]+"/"+shDate[2]+"</span><span onclick='showPreviousPrayTime()' class='arrow'>&#8679;قبل</div>" +
     "<table class='firstDiv'><tr><td class='time-title'>اذان صبح</td>" +
     "<td class='hours'>" + today_times.fajr + "</td>" +
     "<td class='time-title'>طلوع آفتاب</td><td class='hours'>" + today_times.sunrise + "</td></tr>" +

@@ -12,12 +12,19 @@
     </head>
     <body dir="rtl">
         <div class="info">
-            برنامه به شکل اتومات موقعیت جغرافیایی شما را دریافت می نماید و نظر به آن اوقات شرعی را محاسبه میکند.
+            برنامه به شکل اتومات
+            <span class='color-blue'>موقعیت جغرافیایی</span>
+            شما را دریافت مینماید و نظر به آن 
+            <span class='color-blue'>اوقات شرعی</span>
+            محاسبه میگردد.
             <br>
-            محاسبه اوقات شرعی بر اساس موقعیت جغرافیایی دارای خطای 3± دقیقه میباشد
-            لذا به منظور کسب اطمینان بیشتر ۵ دقیقه را به حیث حاشیه در نظر داشته باشید.
+            محاسبه اوقات شرعی براساس موقعیت جغرافیایی دارای خطای 
+            <span class='color-blue'>3± دقیقه</span>
+            میباشد
+            لذا به منظور کسب اطمینان بیشتر <span class="color-blue">5 دقیقه</span> را به حیث حاشیه در نظر داشته باشید.
             <br>
-            متود محاسبه نظر به تفاوت مذاهب مختلف در تعیین افق شرعی در نظر گرفته شده است.
+            <span class="color-blue">متود محاسبه</span>
+             نظر به تفاوت مذاهب مختلف در تعیین افق شرعی در نظر گرفته شده است.
         </div>
         <span class="container-div">
             <section id="container">
@@ -53,7 +60,6 @@
                 
                 <div id="times_details">
                     <div>
-                        <br>
                         <label>متود محاسبه</label>
                         <br>
                         <select class="city" id="method" onchange="setMethod(this)">
@@ -84,7 +90,9 @@
                             <option value="">شهرهای دیگر</option>
                         </select>
                     </div>
-                    <div id="times_footer"></div>
+                    <div>
+                        source: <a href='http://www.PrayTimes.org' target='_blank'>PrayTimes.org</a>
+                    </div>
                 </div>
             </div>
         </span>
