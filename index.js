@@ -32,6 +32,7 @@ let miladi_d = todayArray[1]
 let miladi_y = todayArray[2]
 //convert today miladi date to shamsi
 let shamsiDate = dateToShamsi(miladi_y,miladi_m,miladi_d)
+currentSDay = shamsiDate[2]
 renderCalendar(shamsiDate[0],shamsiDate[1],shamsiDate[2])
 function renderToday(){
     shamsiDateSpan.innerHTML=''
@@ -85,7 +86,7 @@ function dateToShamsi(miladi_y,miladi_m,miladi_d){
     currentSMonth = sM
     currentSYear = sY
     let sD = shamsi_day_no+1
-    currentSDay = sD
+    
     return [sY,sM,sD]
 }
 function renderCalendar(sY,sM,sD){
