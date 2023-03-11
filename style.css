@@ -2,9 +2,9 @@ html{
     font-size: 1rem;
 }
 body{
-    font-family: 'B Nazanin',ubuntu, Helvetica, sans-serif;
+    font-family: 'El Messiri', serif;;
     
-    font-weight: 300;
+    font-weight: 400;
     box-sizing: border-box;
 }
 h1{
@@ -16,8 +16,6 @@ h1{
     cursor: pointer;
 }
 h2{
-    font-family: ubuntu;
-    font-weight: 300;
     margin-top: 0;
 }
 
