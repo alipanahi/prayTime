@@ -1,6 +1,6 @@
 https://alipanahi.github.io/prayTime/
 
-# afghanicalendar
+# Pray Time
 
 calendar base on Afghanistan months names (Dari)
 
