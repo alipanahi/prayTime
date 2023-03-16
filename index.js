@@ -25,11 +25,9 @@ todayBtn.addEventListener('click',renderToday)
 //according to today's date, render the current month
 //let unixdate = Date.now()
 let today = new Date()
-let todayDate = today.toLocaleDateString()
-let todayArray = todayDate.split('/')
-let miladi_m = todayArray[0]
-let miladi_d = todayArray[1]
-let miladi_y = todayArray[2]
+let miladi_m = today.getMonth()+1
+let miladi_d = today.getDate()
+let miladi_y = today.getFullYear()
 //convert today miladi date to shamsi
 let shamsiDate = dateToShamsi(miladi_y,miladi_m,miladi_d)
 currentSDay = shamsiDate[2]
@@ -369,9 +367,9 @@ function calculate(lat,lon,method){
     this.renderPrayTimes(date);
 }
 function renderPrayTimes(date){
+    
     let theDate = date.toLocaleDateString();
-    let miladiDate = theDate.split('/');
-    let shDate = dateToShamsi(miladiDate[2],miladiDate[0],miladiDate[1]);
+    let shDate = dateToShamsi(date.getFullYear(),date.getMonth()+1,date.getDate());
     prayCurrentDay = shDate;
     const today_times = prayTimes.getTimes(date, [selectedLat, selectedLon], 'auto');
     const tomorrow_times = prayTimes.getTimes([date.getFullYear(), parseInt(date.getMonth())+1, parseInt(date.getDate())+1], [selectedLat, selectedLon], 'auto');
