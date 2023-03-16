@@ -367,14 +367,14 @@ function calculate(lat,lon,method){
     this.renderPrayTimes(date);
 }
 function renderPrayTimes(date){
-    
     let theDate = date.toLocaleDateString();
+    
     let shDate = dateToShamsi(date.getFullYear(),date.getMonth()+1,date.getDate());
     prayCurrentDay = shDate;
     const today_times = prayTimes.getTimes(date, [selectedLat, selectedLon], 'auto');
     const tomorrow_times = prayTimes.getTimes([date.getFullYear(), parseInt(date.getMonth())+1, parseInt(date.getDate())+1], [selectedLat, selectedLon], 'auto');
-    let tomorrow_date = new Date(date.setDate(date.getDate()+1)).toLocaleDateString().split('/');
-    let tomorrow_shamsi = this.dateToShamsi(tomorrow_date[2],tomorrow_date[0],tomorrow_date[1]);
+    let tomorrow_date = new Date(date.setDate(date.getDate()+1));
+    let tomorrow_shamsi = this.dateToShamsi(tomorrow_date.getFullYear(),tomorrow_date.getMonth()+1,tomorrow_date.getDate());
     document.getElementById('today').innerHTML = "<div class='today-title'><span class='day-title'>امروز</span><span id='go_today' onclick='goToToday()'>برو به امروز</span>"+shDate[0]+"/"+shDate[1]+"/"+shDate[2]+"</span><span onclick='showPreviousPrayTime()' class='arrow'>&#8679;قبل</div>" +
     "<table class='firstDiv'><tr><td class='time-title'>اذان صبح</td>" +
     "<td class='hours'>" + today_times.fajr + "</td>" +
