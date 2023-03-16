@@ -23,8 +23,8 @@ shamsiDateSpan.addEventListener('click',LoadModal)
 modalOpen.addEventListener('click',renderModal)
 todayBtn.addEventListener('click',renderToday)
 //according to today's date, render the current month
-let unixdate = Date.now()
-let today = new Date(unixdate)
+//let unixdate = Date.now()
+let today = new Date()
 let todayDate = today.toLocaleDateString()
 let todayArray = todayDate.split('/')
 let miladi_m = todayArray[0]
@@ -96,7 +96,7 @@ function renderCalendar(sY,sM,sD){
     shamsiDateSpan.textContent=sY+' '+shamsi_months[sM-1]//shamsi month header
     let sMiladiArray = dateToMiladi(sY,sM,1)
     let shamsiLeapMonth = shamsi_month_days[sM-1]
-    if(sM ==12 && shamsiIsLeap(sY)){//month 12 and leap year
+    if(sM ==12 && shamsiIsLeap(sY)){//month 12 in leap year => 30
         shamsiLeapMonth = 30
     }
     let eMiladiArray = dateToMiladi(sY,sM,shamsiLeapMonth)
