@@ -31,6 +31,10 @@ let miladi_y = today.getFullYear()
 //convert today miladi date to shamsi
 let shamsiDate = dateToShamsi(miladi_y,miladi_m,miladi_d)
 currentSDay = shamsiDate[2]
+selectedMonth = shamsiDate[1]
+selectedYear = shamsiDate[0]
+currentSMonth = shamsiDate[1]
+currentSYear = shamsiDate[0]
 renderCalendar(shamsiDate[0],shamsiDate[1],shamsiDate[2])
 function renderToday(){
     shamsiDateSpan.innerHTML=''
@@ -79,10 +83,7 @@ function dateToShamsi(miladi_y,miladi_m,miladi_d){
         day = i+1 
     }
     let sM = day + 1
-    selectedMonth = sM
-    selectedYear = sY
-    currentSMonth = sM
-    currentSYear = sY
+    
     let sD = shamsi_day_no+1
     
     return [sY,sM,sD]
@@ -204,8 +205,8 @@ function dateToMiladi(y,m,d){
 }
 function div(a, b) {
     return Math.floor(a / b);
- }
- function loadNextMonth(){
+}
+function loadNextMonth(){
     shamsiDateSpan.innerHTML=''
     miladiDateSpan.innerHTML=''
     daysDiv.innerHTML=''
@@ -218,7 +219,6 @@ function div(a, b) {
     else{
         selectedMonth = selectedMonth+1
     }
-    
     renderCalendar(selectedYear,selectedMonth,1)
  }
  function loadPreviousMonth(){
@@ -353,9 +353,7 @@ function showPosition(position) {
     //const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     selectedLat = position.coords.latitude;
     selectedLon = position.coords.longitude;
-    this.calculate(position.coords.latitude, position.coords.longitude,selectedMethod);
-    
-    
+    calculate(position.coords.latitude, position.coords.longitude,selectedMethod);
 }
 function calculate(lat,lon,method){
     prayTimes.setMethod(method);
@@ -364,17 +362,18 @@ function calculate(lat,lon,method){
     document.getElementById('coordination').innerHTML = "عرض جغرافیایی: <span class='color-blue'>" + Number(lat).toFixed(2) + 
     "</span><br>طول جغرافیایی: <span class='color-blue'>" + Number(lon).toFixed(2) + "</span>";
 
-    this.renderPrayTimes(date);
+    renderPrayTimes(date);
 }
 function renderPrayTimes(date){
     let theDate = date.toLocaleDateString();
     
     let shDate = dateToShamsi(date.getFullYear(),date.getMonth()+1,date.getDate());
     prayCurrentDay = shDate;
+    console.log(typeof shDate[0]);
     const today_times = prayTimes.getTimes(date, [selectedLat, selectedLon], 'auto');
     const tomorrow_times = prayTimes.getTimes([date.getFullYear(), parseInt(date.getMonth())+1, parseInt(date.getDate())+1], [selectedLat, selectedLon], 'auto');
     let tomorrow_date = new Date(date.setDate(date.getDate()+1));
-    let tomorrow_shamsi = this.dateToShamsi(tomorrow_date.getFullYear(),tomorrow_date.getMonth()+1,tomorrow_date.getDate());
+    let tomorrow_shamsi = dateToShamsi(tomorrow_date.getFullYear(),tomorrow_date.getMonth()+1,tomorrow_date.getDate());
     document.getElementById('today').innerHTML = "<div class='today-title'><span class='day-title'>امروز</span><span id='go_today' onclick='goToToday()'>برو به امروز</span>"+shDate[0]+"/"+shDate[1]+"/"+shDate[2]+"</span><span onclick='showPreviousPrayTime()' class='arrow'>&#8679;قبل</div>" +
     "<table class='firstDiv'><tr><td class='time-title'>اذان صبح</td>" +
     "<td class='hours'>" + today_times.fajr + "</td>" +
@@ -415,33 +414,33 @@ function getCity(event){
     let selected = cityData.filter(item=>item.id==event.value);
     selectedLat = selected[0].lat;
     selectedLon = selected[0].lon;
-    this.calculate(selected[0].lat,selected[0].lon,selectedMethod);
+    calculate(selected[0].lat,selected[0].lon,selectedMethod);
 }
 function setMethod(event){
     selectedMethod=event.value;
-    this.calculate(selectedLat,selectedLon,event.value);
+    calculate(selectedLat,selectedLon,event.value);
 }
 function showPreviousPrayTime(){
     //console.log(prayCurrentDay);
     //document.getElementById('today').innerHTML = "<img src='./Loading.gif' alt='loading...' height='40px'>"
-    let currentDay = this.dateToMiladi(prayCurrentDay[0],prayCurrentDay[1],prayCurrentDay[2]);
+    let currentDay = dateToMiladi(prayCurrentDay[0],prayCurrentDay[1],prayCurrentDay[2]);
     let currentDayFormated = currentDay[0]+"-"+currentDay[1]+"-"+currentDay[2];
     const currentdate = new Date(currentDayFormated);
-    let date = new Date(currentdate.setDate(currentdate.getDate()-1));
+    let previousDate = new Date(currentdate.setDate(currentdate.getDate()-1));
     
-    this.renderPrayTimes(date);
+    renderPrayTimes(previousDate);
 }
 function showNextPrayTime(){
     //console.log(prayCurrentDay);
-    let currentDay = this.dateToMiladi(prayCurrentDay[0],prayCurrentDay[1],prayCurrentDay[2]);
+    let currentDay = dateToMiladi(prayCurrentDay[0],prayCurrentDay[1],prayCurrentDay[2]);
     let currentDayFormated = currentDay[0]+"-"+currentDay[1]+"-"+currentDay[2];
     const currentdate = new Date(currentDayFormated);
-    let date = new Date(currentdate.setDate(currentdate.getDate()+1));
+    let nextDate = new Date(currentdate.setDate(currentdate.getDate()+1));
 
-    this.renderPrayTimes(date);
+    renderPrayTimes(nextDate);
 }
 function goToToday(){
     const date = new Date();
-    this.renderPrayTimes(date);
+    renderPrayTimes(date);
 }
 
