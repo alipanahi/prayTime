@@ -26,19 +26,20 @@ h2{
     cursor: pointer;
     text-decoration: none;
     padding: .5em 1em;
-    
+    color: #7971b7;
+    font-weight: 700;
 }
 .today:hover{
     background: #eee;
 }
 #container{
     border: 1px solid gainsboro;
-    max-width: 70%;
+    width: 55%;
     /*max-width: 600px;*/
     text-align: center;
-    box-shadow: 0 1px 6px rgb(0 0 0 / 12%), 0 1px 4px rgb(0 0 0 / 24%);
     padding: 1em;
     position: relative;
+    border-radius: 5px;
 }
 .week-days{
     display: flex;
@@ -125,7 +126,7 @@ header{
 
 select{
     padding:.5em;
-    
+    color: inherit;
     width: 30%;
     font-family: inherit;
     font-size: 1em;
@@ -154,27 +155,26 @@ select{
 }
 #times{
     border: 1px solid gainsboro;
-    max-width: 50%;
+    width: 35%;
     /*max-width: 600px;*/
     text-align: center;
-    box-shadow: 0 1px 6px rgb(0 0 0 / 12%), 0 1px 4px rgb(0 0 0 / 24%);
     padding: 1em;
+    border-radius: 5px;
 }
 .container-div{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 #times_details{
     margin-top: 5px;
 }
 .info{
     border: 1px solid gainsboro;
-    box-shadow: 0 1px 6px rgb(0 0 0 / 12%), 0 1px 4px rgb(0 0 0 / 24%);
-    padding: 1em;
-    
-    width: 75%;
-    margin: 0 auto;
+    border-radius: 5px;
+    padding: .5em;
+    background-color: #fff8c4;
     margin-bottom: 5px;
+    font-size: .85em;
 }
 .hours{
     color: #69c2ea;
@@ -219,6 +219,15 @@ select{
 #coordination{
     margin: 5px 0;
 }
+a{
+    color: #7971b7;
+}
+
+.main{
+    width: 90%;
+    margin: 0 auto;
+    
+}
 @media (max-width:1000px){
     #modal{
         display: flex;
@@ -239,15 +248,16 @@ select{
 }
 @media (max-width: 650px){
     .container-div{
-        display: flex;
         flex-direction: column;
 
     }
     #container, #times{
-        max-width: 100%;
+        width: 90%;
         
     }
-    
+    #container{
+        margin-bottom: 5px;
+    }
     .shamsi_day{
         font-size: 1em;
     }

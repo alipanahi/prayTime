@@ -11,91 +11,99 @@
         <meta charset="utf-8"/>
     </head>
     <body dir="rtl">
-        <div class="info">
-            برنامه به شکل اتومات
-            <span class='color-blue'>موقعیت جغرافیایی</span>
-            شما را دریافت مینماید و نظر به آن 
-            <span class='color-blue'>اوقات شرعی</span>
-            محاسبه میگردد.
-            <br>
-            محاسبه اوقات شرعی براساس موقعیت جغرافیایی دارای خطای 
-            <span class='color-blue'>3± دقیقه</span>
-            میباشد
-            لذا به منظور کسب اطمینان بیشتر <span class="color-blue">5 دقیقه</span> را به حیث حاشیه در نظر داشته باشید.
-            <br>
-            <span class="color-blue">متود محاسبه</span>
-             نظر به تفاوت مذاهب مختلف در تعیین افق شرعی در نظر گرفته شده است.
-        </div>
-        <span class="container-div">
-            <section id="container">
-                <header>
-                    <a href="javascript:void()" class="today" id="todayBtn">امروز</a>
-                    <h1><span id="shamsiDate" title="انتخاب ماه های دیگر"></span></h1>
-                    <h2 class="miladi"><span id="miladiDate"></span></h2>
-                    <div class="week-days" dir="rtl">
-                        <p>ش</p>
-                        <p>ی</p>
-                        <p>د</p>
-                        <p>س</p>
-                        <p>چ</p>
-                        <p>پ</p>
-                        <p>ج</p>
-                    </div>
-                    <div id="days" dir="rtl">
-                        
-                    </div>
-                </header>
-                <div class="actions">
-                    <button id="nextMonth" title="ماه بعدی">></button>
-                    <button id="previousMonth" title="ماه قبلی"><</button>
-                </div>
-                <span>
-                    DevelopedBy: <a href="https://github.com/alipanahi" target="_blank">AliHPanahi</a>
-                </span>
-            </section>
-            <div id="times">
-                <span class="times_title">
-                اوقات شرعی شهر شما
-                </span>
-                
-                <div id="times_details">
-                    <div>
-                        <label>متود محاسبه</label>
-                        <br>
-                        <select class="city" id="method" onchange="setMethod(this)">
-                            <option value="">متود محاسبه</option>
-                            <option value="Tehran" selected>Institute of Geophysics, University of Tehran</option>
-                            <option value="Jafari">Shia Ithna Ashari (Ja`fari)</option>
-                            <option value="MWL">Muslim World League</option>
-                            <option value="ISNA">Islamic Society of North America</option>
-                            <option value="Egypt">Egyptian General Authority of Survey</option>
-                            <option value="Makkah">Umm al-Qura University, Makkah</option>
-                            <option value="Karachi">University of Islamic Sciences, Karachi</option>
+        <div class="main">
+            <div class="info">
+                <ul>
+                    <li>
+                    برنامه به شکل اتومات
+                    <span class='color-blue'>موقعیت جغرافیایی</span>
+                    شما را دریافت مینماید و نظر به آن 
+                    <span class='color-blue'>اوقات شرعی</span>
+                    محاسبه میگردد.
+                    </li>
+                    <li>
+                    محاسبه اوقات شرعی براساس موقعیت جغرافیایی دارای خطای 
+                    <span class='color-blue'>3± دقیقه</span>
+                    میباشد
+                    لذا به منظور کسب اطمینان بیشتر <span class="color-blue">5 دقیقه</span> را به حیث حاشیه در نظر داشته باشید.
+                    </li>
+                    <li>
+                    <span class="color-blue">متود محاسبه</span>
+                    نظر به تفاوت مذاهب مختلف در تعیین افق شرعی در نظر گرفته شده است.
+                    </li>
+                </ul>
+            </div>
+            <div class="container-div">
+                <section id="container">
+                    <header>
+                        <a href="javascript:void()" class="today" id="todayBtn">امروز</a>
+                        <h1><span id="shamsiDate" title="انتخاب ماه های دیگر"></span></h1>
+                        <h2 class="miladi"><span id="miladiDate"></span></h2>
+                        <div class="week-days" dir="rtl">
+                            <p>ش</p>
+                            <p>ی</p>
+                            <p>د</p>
+                            <p>س</p>
+                            <p>چ</p>
+                            <p>پ</p>
+                            <p>ج</p>
+                        </div>
+                        <div id="days" dir="rtl">
                             
-                        </select>
+                        </div>
+                    </header>
+                    <div class="actions">
+                        <button id="nextMonth" title="ماه بعدی">></button>
+                        <button id="previousMonth" title="ماه قبلی"><</button>
                     </div>
-                    <div id="coordination"></div>
-                    <div id="today"></div>
-                    <div id="tomorrow"></div>
-                    <br>
+                    <span>
+                        DevelopedBy: <a href="https://github.com/alipanahi" target="_blank">AliHPanahi</a>
+                    </span>
+                </section>
+                <div id="times">
                     <span class="times_title">
-                    اوقات شرعی شهرهای دیگر
+                    اوقات شرعی شهر شما
                     </span>
                     
-                    <div style="margin-top: 5px;">
-                        <select class="city" id="country" onchange="getCountryCities(this)">
-                            <option value="">کشورهای دیگر</option>
-                        </select>
-                        <select class="city" id="city" onchange="getCity(this)">
-                            <option value="">شهرهای دیگر</option>
-                        </select>
-                    </div>
-                    <div>
-                        source: <a href='http://www.PrayTimes.org' target='_blank'>PrayTimes.org</a>
+                    <div id="times_details">
+                        <div>
+                            <label>متود محاسبه</label>
+                            <br>
+                            <select class="city" id="method" onchange="setMethod(this)">
+                                <option value="">متود محاسبه</option>
+                                <option value="Tehran" selected>Institute of Geophysics, University of Tehran</option>
+                                <option value="Jafari">Shia Ithna Ashari (Ja`fari)</option>
+                                <option value="MWL">Muslim World League</option>
+                                <option value="ISNA">Islamic Society of North America</option>
+                                <option value="Egypt">Egyptian General Authority of Survey</option>
+                                <option value="Makkah">Umm al-Qura University, Makkah</option>
+                                <option value="Karachi">University of Islamic Sciences, Karachi</option>
+                                
+                            </select>
+                        </div>
+                        <div id="coordination"></div>
+                        <div id="today"></div>
+                        <div id="tomorrow"></div>
+                        <br>
+                        <span class="times_title">
+                        اوقات شرعی شهرهای دیگر
+                        </span>
+                        
+                        <div style="margin-top: 5px;">
+                            <select class="city" id="country" onchange="getCountryCities(this)">
+                                <option value="">کشورهای دیگر</option>
+                            </select>
+                            <select class="city" id="city" onchange="getCity(this)">
+                                <option value="">شهرهای دیگر</option>
+                            </select>
+                        </div>
+                        <div>
+                            source: <a href='http://www.PrayTimes.org' target='_blank'>PrayTimes.org</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </span>
+        </div>
         <div id="overlay" style="display: none;">
             <div id="modal">
                 <select id="select_year">
