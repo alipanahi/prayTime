@@ -67,12 +67,7 @@ h2{
     border: 2px solid #555;
     border-radius: 5px;
 }
-.developedBy{
-    position: absolute;
-    left: 10px;
-    bottom: 10px;
-    
-}
+
 header{
     position: relative;
 }
