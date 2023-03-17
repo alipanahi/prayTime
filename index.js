@@ -424,8 +424,8 @@ function showPreviousPrayTime(){
     //console.log(prayCurrentDay);
     //document.getElementById('today').innerHTML = "<img src='./Loading.gif' alt='loading...' height='40px'>"
     let currentDay = dateToMiladi(prayCurrentDay[0],prayCurrentDay[1],prayCurrentDay[2]);
-    let currentDayFormated = currentDay[0]+"-"+currentDay[1]+"-"+currentDay[2];
-    const currentdate = new Date(currentDayFormated);
+    //let currentDayFormated = currentDay[0]+"-"+currentDay[1]+"-"+currentDay[2];
+    const currentdate = new Date(currentDay[0],currentDay[1]-1,currentDay[2]);
     let previousDate = new Date(currentdate.setDate(currentdate.getDate()-1));
     
     renderPrayTimes(previousDate);
@@ -433,8 +433,8 @@ function showPreviousPrayTime(){
 function showNextPrayTime(){
     //console.log(prayCurrentDay);
     let currentDay = dateToMiladi(prayCurrentDay[0],prayCurrentDay[1],prayCurrentDay[2]);
-    let currentDayFormated = currentDay[0]+"-"+currentDay[1]+"-"+currentDay[2];
-    const currentdate = new Date(currentDayFormated);
+    //let currentDayFormated = currentDay[0]+"-"+currentDay[1]+"-"+currentDay[2];
+    const currentdate = new Date(currentDay[0],currentDay[1]-1,currentDay[2]);
     let nextDate = new Date(currentdate.setDate(currentdate.getDate()+1));
 
     renderPrayTimes(nextDate);
