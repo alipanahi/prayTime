@@ -374,7 +374,7 @@ function renderPrayTimes(date){
     const tomorrow_times = prayTimes.getTimes([date.getFullYear(), parseInt(date.getMonth())+1, parseInt(date.getDate())+1], [selectedLat, selectedLon], 'auto');
     let tomorrow_date = new Date(date.setDate(date.getDate()+1));
     let tomorrow_shamsi = dateToShamsi(tomorrow_date.getFullYear(),tomorrow_date.getMonth()+1,tomorrow_date.getDate());
-    document.getElementById('today').innerHTML = "<div class='today-title'><span class='day-title'>امروز</span><span id='go_today' onclick='goToToday()'>برو به امروز</span>"+shDate[0]+"/"+shDate[1]+"/"+shDate[2]+"</span><span onclick='showPreviousPrayTime()' class='arrow'>&#8679;قبل</div>" +
+    document.getElementById('today').innerHTML = "<div class='today-title'><span class='day-title'>امروز</span><span id='go_today' onclick='goToToday()'>برگشت به امروز</span>"+shDate[0]+"/"+shDate[1]+"/"+shDate[2]+"</span><span onclick='showPreviousPrayTime()' class='arrow'>&#8679;قبل</div>" +
     "<table class='firstDiv'><tr><td class='time-title'>اذان صبح</td>" +
     "<td class='hours'>" + today_times.fajr + "</td>" +
     "<td class='time-title'>طلوع آفتاب</td><td class='hours'>" + today_times.sunrise + "</td></tr>" +
@@ -446,7 +446,10 @@ function goToToday(){
     renderPrayTimes(date);
 }
 function getMonthPrayTime(){
-    
+    let mobile = window.orientation > 1;
+    if(mobile){
+        window.scrollTo(0, 700);
+    }
     let sMiladiArray = dateToMiladi(selectedYear,selectedMonth,1)
     let date = new Date(sMiladiArray[0],sMiladiArray[1]-1,sMiladiArray[2])
     console.log(selectedMonth)
