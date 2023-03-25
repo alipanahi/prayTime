@@ -56,9 +56,11 @@
                         <button id="nextMonth" title="ماه بعدی">></button>
                         <button id="previousMonth" title="ماه قبلی"><</button>
                     </div>
-                    <span>
+                    <div>
+                        <a href="javascript:void();" onclick="getMonthPrayTime()">اوقات شرعی این ماه</a>
+                        <br>
                         DevelopedBy: <a href="https://github.com/alipanahi" target="_blank">AliHPanahi</a>
-                    </span>
+                    </div>
                 </section>
                 <div id="times">
                     
@@ -82,8 +84,11 @@
                             اوقات شرعی شهر شما
                         </span>
                         <div id="coordination"></div>
-                        <div id="today"></div>
-                        <div id="tomorrow"></div>
+                        <span id="all_times"></span>
+                        <span id="today_times">
+                            <div id="today"></div>
+                            <div id="tomorrow"></div>
+                        </span>
                         <br>
                         <span class="times_title">
                         اوقات شرعی شهرهای دیگر

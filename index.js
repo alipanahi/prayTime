@@ -369,7 +369,7 @@ function renderPrayTimes(date){
     
     let shDate = dateToShamsi(date.getFullYear(),date.getMonth()+1,date.getDate());
     prayCurrentDay = shDate;
-    console.log(typeof shDate[0]);
+    //console.log(typeof shDate[0]);
     const today_times = prayTimes.getTimes(date, [selectedLat, selectedLon], 'auto');
     const tomorrow_times = prayTimes.getTimes([date.getFullYear(), parseInt(date.getMonth())+1, parseInt(date.getDate())+1], [selectedLat, selectedLon], 'auto');
     let tomorrow_date = new Date(date.setDate(date.getDate()+1));
@@ -440,7 +440,56 @@ function showNextPrayTime(){
     renderPrayTimes(nextDate);
 }
 function goToToday(){
+    document.getElementById('all_times').style.display='none'
+    document.getElementById('today_times').style.display='block'
     const date = new Date();
     renderPrayTimes(date);
+}
+function getMonthPrayTime(){
+    
+    let sMiladiArray = dateToMiladi(selectedYear,selectedMonth,1)
+    let date = new Date(sMiladiArray[0],sMiladiArray[1]-1,sMiladiArray[2])
+    console.log(selectedMonth)
+    document.getElementById('today_times').style.display='none'
+    let elem = document.getElementById('all_times')
+    elem.style.display='block'
+    let allTRs = ''
+    let month = parseInt(date.getMonth())+1
+    
+    let shamsiDay = 0
+    paired.forEach((day,index)=>{
+        let time=''
+        shamsiDay++
+        if(typeof day === "number"){
+            time = prayTimes.getTimes([date.getFullYear(), month, day], [selectedLat, selectedLon], 'auto');
+        }else{
+            month+=1
+            time = prayTimes.getTimes([date.getFullYear(), month, 1], [selectedLat, selectedLon], 'auto');
+        }
+        
+        let trClass = index%2==0 ? 'even': 'odd'
+        allTRs+=`
+        <tr class=`+trClass+`>
+            <td>`+shamsiDay+` `+shamsi_months[selectedMonth-1]+`</td>
+            <td>`+time.fajr+`</td>
+            <td>`+time.maghrib+`</td>
+        </tr>
+        `
+    })
+    elem.innerHTML = `
+        <a href="javascript:void();" onclick="goToToday()">برگشت به اوقات شرعی امروز</a>
+        <table class='times_list'>
+            <thead>
+                <tr>
+                    <td>تاریخ</td>
+                    <td>اذان صبح</td>
+                    <td>اذان مغرب</td>
+                </tr>
+            </thead>
+            <tbody>
+            `+allTRs+`
+            </tbody>
+        </table>
+    `
 }
 

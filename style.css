@@ -228,6 +228,24 @@ a{
     margin: 0 auto;
     
 }
+.times_list{
+    width: 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+.times_list thead{
+    background: #555;
+    color: white;
+}
+.times_list tbody tr td{
+    border: 1px solid black;
+}
+.even{
+    background-color:#eee;
+}
+.odd{
+    background-color: white;
+}
 @media (max-width:1000px){
     #modal{
         display: flex;
