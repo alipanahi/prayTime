@@ -447,7 +447,7 @@ function goToToday(){
 }
 function getMonthPrayTime(){
     
-    window.scrollTo(0, 900);
+    setTimeout(window.scrollTo(0,800),100);
     let sMiladiArray = dateToMiladi(selectedYear,selectedMonth,1)
     let date = new Date(sMiladiArray[0],sMiladiArray[1]-1,sMiladiArray[2])
     console.log(selectedMonth)
