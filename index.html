@@ -58,7 +58,7 @@
                     </div>
                     <div class="calendar-footer">
                         <div class="month-list-div">
-                            <a href="javascript:void();" class="month_times_list" onclick="getMonthPrayTime()">اوقات شرعی این ماه</a>
+                            <a href="javascript:void();" class="month_times_list" onclick="getMonthPrayTime()">اوقات شرعی ماه <span id="list_btn_month_name"></span></a>
                         </div>
                         <div>
                             DevelopedBy: <a href="https://github.com/alipanahi" target="_blank">AliHPanahi</a>
@@ -72,7 +72,7 @@
                         <br>
                         <select class="city" id="method" onchange="setMethod(this)">
                             <option value="">متود محاسبه</option>
-                            <option value="1" selected>موسسه ژئوفیزیک دانشگاه تهران	</option>
+                            <option value="1" selected>موسسه ژئوفیزیک دانشگاه تهران</option>
                             <option value="2">موسسه پژوهشی لواء قم</option>
                             <option value="3">اتحادیه جهانی مسلمانان</option>
                             <option value="4">جامعه مسلمانان شمال آمریکا</option>
@@ -120,7 +120,7 @@
                 <select id="select_month">
                     
                 </select>
-                <a href="#" id="modalBtn" class="modalBtn">انتخاب</a>
+                <a href="javascript:void()" id="modalBtn" class="modalBtn">انتخاب</a>
             </div>
         </div>
         <script type="text/javascript" src="PrayTimes.js"></script>

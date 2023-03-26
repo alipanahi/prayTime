@@ -93,6 +93,7 @@ function renderCalendar(sY,sM,sD){
         isCurrentMoth = true
     }
     shamsiDateSpan.textContent=sY+' '+shamsi_months[sM-1]//shamsi month header
+    document.getElementById('list_btn_month_name').textContent=shamsi_months[sM-1]
     let sMiladiArray = dateToMiladi(sY,sM,1)
     let shamsiLeapMonth = shamsi_month_days[sM-1]
     if(sM ==12 && shamsiIsLeap(sY)){//month 12 in leap year => 30
@@ -433,7 +434,7 @@ function showPreviousPrayTime(){
     let currentDay = dateToMiladi(prayCurrentDay[0],prayCurrentDay[1],prayCurrentDay[2]);
     //let currentDayFormated = currentDay[0]+"-"+currentDay[1]+"-"+currentDay[2];
     const currentdate = new Date(currentDay[0],currentDay[1]-1,currentDay[2]);
-    let previousDate = new Date(currentdate.setDate(currentdate.getDate()-1));
+    let previousDate = new Date(currentdate.setDate(currentdate.getDate()-2));
     
     renderPrayTimes(previousDate);
 }
@@ -442,7 +443,7 @@ function showNextPrayTime(){
     let currentDay = dateToMiladi(prayCurrentDay[0],prayCurrentDay[1],prayCurrentDay[2]);
     //let currentDayFormated = currentDay[0]+"-"+currentDay[1]+"-"+currentDay[2];
     const currentdate = new Date(currentDay[0],currentDay[1]-1,currentDay[2]);
-    let nextDate = new Date(currentdate.setDate(currentdate.getDate()+1));
+    let nextDate = new Date(currentdate.setDate(currentdate.getDate()+2));
 
     renderPrayTimes(nextDate);
 }
