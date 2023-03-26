@@ -316,8 +316,14 @@ let cityData = '';
 let countryData='';
 let selectedLon='';
 let selectedLat='';
+let mothods = {"1":"Tehran","2":"Jafari","3":"MWL","4":"ISNA","5":"Egypt","6":"Makkah","7":"Karachi"}
 let selectedMethod='Tehran';
-
+let method = document.getElementById('method');
+if(window.localStorage.getItem('prayTime_method')){
+    let selectedMethodOption = window.localStorage.getItem('prayTime_method');
+    method.options.selectedIndex = selectedMethodOption;
+    selectedMethod=mothods[selectedMethodOption];
+}
 let prayCurrentDay=shamsiDate;
 fetch("./countries.json")
   .then((response) => response.json())
@@ -417,8 +423,9 @@ function getCity(event){
     calculate(selected[0].lat,selected[0].lon,selectedMethod);
 }
 function setMethod(event){
-    selectedMethod=event.value;
-    calculate(selectedLat,selectedLon,event.value);
+    selectedMethod=mothods[event.value];
+    window.localStorage.setItem("prayTime_method",event.value);
+    calculate(selectedLat,selectedLon,selectedMethod);
 }
 function showPreviousPrayTime(){
     //console.log(prayCurrentDay);
